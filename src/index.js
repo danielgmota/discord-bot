@@ -9,19 +9,27 @@ const client = new Client({
     IntentsBitField.Flags.MessageContent,
   ],
 });
+const URL_BASE = "https://robertsspaceindustries.com/citizens/";
+const roleMember = "770496818555387914";
 
 client.login(process.env.TOKEN);
 
-client.on("messageCreate", (message) => {
+client.on("messageCreate", async (message) => {
+  const isLinkValid = message.content.includes(URL_BASE);
+
   if (message.channel.id === "770497261335216148") {
-    if (!message.author.bot) {
+    if (!message.author.bot && !isLinkValid) {
       message.reply(
-        "Este canal é para cadastro neste servidor discord apenas! Digite abaixo o comando: /cadastro"
+        "Este canal é apenas para cadastro neste servidor do discord! Envie o link do seu usuario conforme o video acima"
       );
     }
-    // if (message.content === "usuario:") {
-    //   message.reply("Cadastrado!");
-    // }
+    if (isLinkValid) {
+      const url_user = message.content;
+      const user = url_user.split("/citizens/");
+      await message.member.roles.add(roleMember);
+      // await message.member.setNickname(user[1]);
+      message.reply(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
+    }
   }
 });
 
@@ -38,7 +46,7 @@ client.on("interactionCreate", async (interaction) => {
       );
     } else {
       await interaction.member.roles.add(roleMember);
-      await interaction.member.setNickname(name.value);
+      // await interaction.member.setNickname(name.value);
       interaction.reply(`Cadastrado ${name.value}, bem-vindo a EliteBR!`);
     }
   }
