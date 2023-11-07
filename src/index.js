@@ -26,9 +26,16 @@ client.on("messageCreate", async (message) => {
     if (isLinkValid) {
       const url_user = message.content;
       const user = url_user.split("/citizens/");
-      await message.member.roles.add(roleMember);
+      try {
+        await message.member.roles.add(roleMember);
+      } catch (e) {
+        console.error(`Cadastrado falhou ${user[1]}`);
+        message.reply(`Cadastro falhou, tente novamente ${user[1]}!`);
+      } finally {
+        message.reply(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
+        console.log(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
+      }
       // await message.member.setNickname(user[1]);
-      message.reply(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
     }
   }
 });
