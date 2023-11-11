@@ -18,9 +18,9 @@ client.on("messageCreate", async (message) => {
   const isLinkValid = message.content.includes(URL_BASE);
 
   if (message.channel.id === "770497261335216148") {
-    if (!message.author.bot && !isLinkValid) {
+    if (!message.author.bot && !isLinkValid && !message.system) {
       message.reply(
-        "Este canal é apenas para cadastro neste servidor do discord! Envie o link do seu usuario conforme o video acima"
+        "Este canal é apenas para cadastro neste servidor do Discord! Envie o link do seu usuário conforme esta passo-a-passo: https://discord.com/channels/705811068110372875/770497261335216148/975503620193792061"
       );
     }
     if (isLinkValid) {
