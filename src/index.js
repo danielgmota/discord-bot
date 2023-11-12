@@ -20,7 +20,7 @@ client.on("messageCreate", async (message) => {
   if (message.channel.id === "770497261335216148") {
     if (!message.author.bot && !isLinkValid && !message.system) {
       message.reply(
-        "Este canal é apenas para cadastro neste servidor do Discord! Envie o link do seu usuário conforme esta passo-a-passo: https://discord.com/channels/705811068110372875/770497261335216148/975503620193792061"
+        "Este canal é apenas para cadastro neste servidor do Discord! Envie o link do seu usuário conforme este passo-a-passo: https://discord.com/channels/705811068110372875/770497261335216148/975503620193792061"
       );
     }
     if (isLinkValid) {
@@ -29,11 +29,11 @@ client.on("messageCreate", async (message) => {
       try {
         await message.member.roles.add(roleMember);
       } catch (e) {
-        console.error(`Cadastrado falhou ${user[1]}`);
+        console.error(`Cadastro falhou ${user[1]}`);
         message.reply(`Cadastro falhou, tente novamente ${user[1]}!`);
       } finally {
-        message.reply(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
-        console.log(`Cadastrado concluido ${user[1]}, bem-vindo a EliteBR!`);
+        message.reply(`Cadastro concluído ${user[1]}, bem-vindo a EliteBR!`);
+        console.log(`Cadastro concluido ${user[1]}, bem-vindo a EliteBR!`);
       }
       // await message.member.setNickname(user[1]);
     }
