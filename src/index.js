@@ -1,5 +1,6 @@
 const { Client, IntentsBitField } = require("discord.js");
 require("dotenv").config();
+const keep_alive = require('./keep_alive.js')
 
 const client = new Client({
   intents: [
@@ -40,21 +41,21 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.on("interactionCreate", async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
+// client.on("interactionCreate", async (interaction) => {
+//   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "cadastro") {
-    const name = interaction.options.get("nome-de-usuario");
-    const roleMember = "770496818555387914";
+//   if (interaction.commandName === "cadastro") {
+//     const name = interaction.options.get("nome-de-usuario");
+//     const roleMember = "770496818555387914";
 
-    if (!name) {
-      interaction.reply(
-        "Precisa selecionar o nome-de-usuario e digitar seu usuario ÚNICO no star citizen"
-      );
-    } else {
-      await interaction.member.roles.add(roleMember);
-      // await interaction.member.setNickname(name.value);
-      interaction.reply(`Cadastrado ${name.value}, bem-vindo a EliteBR!`);
-    }
-  }
-});
+//     if (!name) {
+//       interaction.reply(
+//         "Precisa selecionar o nome-de-usuario e digitar seu usuario ÚNICO no star citizen"
+//       );
+//     } else {
+//       await interaction.member.roles.add(roleMember);
+//       // await interaction.member.setNickname(name.value);
+//       interaction.reply(`Cadastrado ${name.value}, bem-vindo a EliteBR!`);
+//     }
+//   }
+// });
