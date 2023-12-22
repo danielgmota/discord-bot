@@ -10,15 +10,21 @@ const client = new Client({
     IntentsBitField.Flags.MessageContent,
   ],
 });
-const URL_BASE = "https://robertsspaceindustries.com/citizens/";
-const roleMember = "770496818555387914";
+
+
+
 
 client.login(process.env.TOKEN);
 
 client.on("messageCreate", async (message) => {
-  const isLinkValid = message.content.includes(URL_BASE);
+  const canalCadastro = "770497261335216148";
+  const canalSTKgraduacao = "1187810317804244992";
+  
+  if (message.channel.id === canalCadastro) {
+    const isLinkValid = message.content.includes(URL_BASE);
+    const URL_BASE = "https://robertsspaceindustries.com/citizens/";
+  const roleMember = "770496818555387914";
 
-  if (message.channel.id === "770497261335216148") {
     if (!message.author.bot && !isLinkValid && !message.system) {
       message.reply(
         "Este canal é apenas para cadastro neste servidor do Discord! Envie o link do seu usuário conforme este passo-a-passo: https://discord.com/channels/705811068110372875/770497261335216148/975503620193792061"
@@ -39,7 +45,28 @@ client.on("messageCreate", async (message) => {
       // await message.member.setNickname(user[1]);
     }
   }
+
+
+  if (message.channel.id === canalSTKgraduacao) {
+    const isLinkValid = message.content.includes(URL_BASE);
+    const roleSTK = "798975316617330728";
+
+    // if (!message.author.bot && !message.system) {
+    //   message.reply(
+    //     "Este canal é apenas para cadastro neste servidor do Discord! Envie o link do seu usuário conforme este passo-a-passo: https://discord.com/channels/705811068110372875/770497261335216148/975503620193792061"
+    //   );
+    // }
+
+    //criar botao
+
+    //criar topico e marcar STK
+
+  }
+
+
 });
+
+
 
 // client.on("interactionCreate", async (interaction) => {
 //   if (!interaction.isChatInputCommand()) return;
