@@ -61,7 +61,7 @@ client.on("messageCreate", async (message) => {
 
     if (message.author.bot) return;
 
-    if (message.content !== "bot_stk") return;
+    // if (message.content !== "bot_stk") return;
 
     console.log("bot stk solicitado");
 
@@ -103,6 +103,7 @@ client.on("messageCreate", async (message) => {
         const user = interaction.user;
         const userName = user.username;
         const threadName = "treino-piloto-" + userName;
+        console.log("treino-piloto solicitado", user);
 
         try {
           const threadChannel = await channel.threads.create({
@@ -127,6 +128,7 @@ client.on("messageCreate", async (message) => {
         const user = interaction.user;
         const userName = user.username;
         const threadName = "treino-soldado-" + userName;
+        console.log("treino-soldado solicitado", user);
 
         try {
           const threadChannel = await channel.threads.create({
